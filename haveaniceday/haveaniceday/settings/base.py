@@ -28,6 +28,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'website_component',
     'tables_of_month',
     'django.contrib.admin',
     'django.contrib.auth',
