@@ -1,10 +1,10 @@
-{# tables_of_month/templates/home.html #}
+{# tables_of_month/templates/table_detail.html #}
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{{ value|default:"Dashboard" }}</title>
+    <title>{{ table }} | {{ value|default:"Dashboard" }}</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
 
@@ -18,7 +18,7 @@
         <div>
           <ul class="nav navbar-nav">
             <li>
-              <a href="{% url 'table_list' %}">{{ value|default:"人員輪值表" }}</a>
+              <a href="#">人員輪值表</a>
             </li>
             <li>
               <a href="#">機房檢查表</a>
@@ -39,5 +39,35 @@
         </div>
       </div>
     </nav>
+    <div class="container">
+      <h1>{{ table }}</h1>
+      <p>{{ table.notes }}</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>column1</th>
+            <th>column2</th>
+            <th>column3</th>
+            <th>column4</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for shift in table.shifts.all %}
+          <tr>
+            <td>
+              {{ shift.date }}
+            </td>
+            <td>
+              {{ man }}
+            </td>
+            <td>
+              {{ substitute }}
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
