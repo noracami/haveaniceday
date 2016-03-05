@@ -20,20 +20,25 @@
             <li>
               <a href="{% url 'table_list' %}">{{ value|default:"人員輪值表" }}</a>
             </li>
-            <li>
-              <a href="#">機房檢查表</a>
+            <li class="disabled">
+              <a href="javascript://">機房檢查表</a>
             </li>
-            <li>
-              <a href="#">機房日誌</a>
+            <li class="disabled">
+              <a href="javascript://">機房日誌</a>
             </li>
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'admin:index' %}">Admin</a>
+            </li>
+            {% endif %}
           </ul>
-          <form class="navbar-right navbar-form" method="post" action="#">
+          <form class="navbar-right navbar-form" method="post" action="{% url 'admin:logout' %}">
             {% if user.is_authenticated %}
             {% csrf_token %}
-            <input type="hidden" name="next" value="#">
+            <input type="hidden" name="next" value="{% url 'home' %}">
             <button class="btn btn-default" type="submit">登出</button>
             {% else %}
-            <a class="btn btn-default" href="#">登入</a>
+            <a class="btn btn-default" href="{% url 'admin:login' %}?next={% url 'home' %}">登入</a>
             {% endif %}
           </form>
         </div>
