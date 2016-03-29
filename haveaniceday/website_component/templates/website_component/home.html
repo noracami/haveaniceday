@@ -1,0 +1,29 @@
+{# website_component/templates/home.html #}
+{% extends "website_component/base.html" %}
+{% block navbar %}
+<div>
+  <ul class="nav navbar-nav">
+    <li>
+      <a href="{% url 'order_list' %}">{{ value|default:"人員調動資料" }}</a>
+    </li>
+    <li>
+      <a href="{% url 'table_list' %}">{{ value|default:"人員輪值表" }}</a>
+    </li>
+    <li>
+      <a href="#">機房檢查表</a>
+    </li>
+    <li>
+      <a href="#">機房日誌</a>
+    </li>
+  </ul>
+  <form class="navbar-right navbar-form" method="post" action="#">
+    {% if user.is_authenticated %}
+    {% csrf_token %}
+    <input type="hidden" name="next" value="#">
+    <button class="btn btn-default" type="submit">登出</button>
+    {% else %}
+    <a class="btn btn-default" href="#">登入</a>
+    {% endif %}
+  </form>
+</div>
+{% endblock %}

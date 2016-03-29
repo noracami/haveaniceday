@@ -1,4 +1,4 @@
-{# tables_of_month/templates/home.html #}
+{# order/templates/order_list.html #}
 
 <!DOCTYPE html>
 <html>
@@ -18,10 +18,7 @@
         <div>
           <ul class="nav navbar-nav">
             <li>
-              <a href="{% url 'order_list' %}">{{ value|default:"人員調動資料" }}</a>
-            </li>
-            <li>
-              <a href="{% url 'table_list' %}">{{ value|default:"人員輪值表" }}</a>
+              <a href="#">人員輪值表</a>
             </li>
             <li>
               <a href="#">機房檢查表</a>
@@ -42,5 +39,12 @@
         </div>
       </div>
     </nav>
+    <div class="container">
+      {% for table in tables %}
+      <div class="_table">
+        <h2><a href="{% url 'table_detail' pk=table.pk %}">{{ table }}</a></h2>
+      </div>
+      {% endfor %}
+    </div>
   </body>
 </html>
