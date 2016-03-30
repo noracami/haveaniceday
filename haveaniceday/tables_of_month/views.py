@@ -3,7 +3,7 @@ from .models import TableOfMonth, Shift
 
 # Create your views here.
 def home(request):
-    return render(request, 'website_component/home.html')
+    return render(request, 'website_component/home.html', {'ViewName': request})
 
 def table_list(request):
     tables = TableOfMonth.objects.all()

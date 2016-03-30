@@ -32,11 +32,53 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         {% block navbar %}
+        <div>
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="{% url 'order_list' %}">{{ value|default:"人員調動資料" }}</a>
+            </li>
+            <li>
+              <a href="{% url 'table_list' %}">{{ value|default:"人員輪值表" }}</a>
+            </li>
+            <li class="disabled">
+              <a href="javascript://">機房檢查表</a>
+            </li>
+            <li class="disabled">
+              <a href="javascript://">機房日誌</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'admin:index' %}">Admin</a>
+            </li>
+            {% endif %}
+          </ul>
+          <form class="navbar-right navbar-form" method="post" action="{% url 'admin:logout' %}">
+            {% if user.is_authenticated %}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'home' %}">
+            <button class="btn btn-default" type="submit">登出</button>
+            {% else %}
+            <a class="btn btn-default" href="{% url 'admin:login' %}?next={% url 'home' %}">登入</a>
+            {% endif %}
+          </form>
+        </div>
         {% endblock %}
       </div>
     </nav>
-    <div class="container"></div>
+    <div class="container">
+      {% block content %}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
+        <div class="panel-body">
+          ViewName:{{ ViewName|default:"ViewName "}}
+        </div>
+      </div>
+      {% endblock content %}
+    </div>
   </body>
   <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </html>
