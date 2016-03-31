@@ -14,14 +14,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from tables_of_month.views import home, table_list, table_detail
-from order.views import order_list, order_detail
+from website_component import views as basic_views
 
 urlpatterns = [
-    url(r'^$', home, name='home'),
-    url(r'^table/$', table_list, name='table_list'),
-    url(r'^table/(?P<pk>\d+)/$', table_detail, name='table_detail'),
-    url(r'^order/$', order_list, name='order_list'),
-    url(r'^order/(?P<pk>\d+)/$', order_detail, name='order_detail'),
+    url(r'^$', basic_views.home, name='home'),
+    url(r'^table/', include('tables_of_month.urls', namespace="tables_of_month")),
+    url(r'^order/', include('order.urls', namespace="order")),
     url(r'^admin/', include(admin.site.urls)),
 ]

@@ -24,7 +24,7 @@
     <link rel=icon href=/favicon.ico>
   </head>
 
-  <body>
+  <body style="background-color: #f5f5f5;">
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -35,10 +35,10 @@
         <div>
           <ul class="nav navbar-nav">
             <li>
-              <a href="{% url 'order_list' %}">{{ value|default:"人員調動資料" }}</a>
+              <a href="{% url 'order:home' %}">{{ value|default:"人員調動資料" }}</a>
             </li>
             <li>
-              <a href="{% url 'table_list' %}">{{ value|default:"人員輪值表" }}</a>
+              <a href="{% url 'tables_of_month:home' %}">{{ value|default:"人員輪值表" }}</a>
             </li>
             <li class="disabled">
               <a href="javascript://">機房檢查表</a>

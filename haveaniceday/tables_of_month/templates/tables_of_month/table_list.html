@@ -1,0 +1,13 @@
+{# tables_of_month/templates/table_list.html #}
+{% extends "tables_of_month/base.html" %}
+{% block navbar %}
+{{ block.super }}
+{% endblock %}
+{% block content %}
+{{ block.super }}
+{% for table in tables %}
+<div class="_table">
+  <h2><a href="{% url 'tables_of_month:table_detail' pk=table.pk %}">{{ table }}</a></h2>
+</div>
+{% endfor %}
+{% endblock %}
