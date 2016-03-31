@@ -1,0 +1,38 @@
+{# order/templates/order_detail.html #}
+{% extends "order/base.html" %}
+{% block navbar %}
+{{ block.super }}
+{% endblock %}
+{% block content %}
+{{ block.super }}
+<h1>{{ table }}</h1>
+<p>{{ table.notes }}</p>
+<p>{{ member }}</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>column1</th>
+      <th>column2</th>
+      <th>column3</th>
+      <th>column4</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for shift in table.shifts.all %}
+    <tr>
+      <td>
+        {{ shift.date }}
+      </td>
+      <td>
+        {{ man }}
+      </td>
+      <td>
+        {{ substitute }}
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

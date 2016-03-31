@@ -5,7 +5,6 @@ from .models import TableOfMonth, Shift
 def home(request):
     tables = TableOfMonth.objects.all()
     return render(request, 'tables_of_month/table_list.html', {'tables': tables})
-    return render(request, 'website_component/home.html', {'ViewName': request})
 
 #def table_list(request):
 #    tables = TableOfMonth.objects.all()

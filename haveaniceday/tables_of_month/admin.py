@@ -1,8 +1,13 @@
 from django.contrib import admin
 from .models import TableOfMonth, Shift
+from order.models import Member
 from website_component.models import CustomWebPage, CustomComponent
 
 # Register your models here.
+
+@admin.register(Member)
+class MemberAdmin(admin.ModelAdmin):
+    list_display = ['name', 'kmID', 'edocID', 'emailID', 'birthdate', 'personalID', 'location', 'title', 'notes']
 
 class ShiftInline(admin.TabularInline):
     model = Shift
