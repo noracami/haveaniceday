@@ -6,6 +6,14 @@ def home(request):
     return render(request, 'order/order_list.html', {})
     return render(request, 'website_component/home.html', {'ViewName': request})
 
+def member_list(request):
+    """
+    docstring for member_list
+    """
+    members = Member.objects.all()
+    return render(request, 'order/member_list.html', {'members': members})
+
+
 def member_detail(request):
     m = 'empty'
     if 'id' in request.GET:
