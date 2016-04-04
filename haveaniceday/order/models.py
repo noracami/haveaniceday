@@ -23,6 +23,9 @@ class Member(models.Model):
         while len(locations) < 3:
             locations += ['']
         self.location1, self.location2, self.location3 = locations
+        output = 'ori:%s -> [%s, %s, %s]' % (
+            self.location, self.location1, self.location2, self.location3)
+        print(output)
         return
 
 
