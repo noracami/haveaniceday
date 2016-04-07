@@ -5,3 +5,4 @@
 [travis-ci]: https://travis-ci.org/noracami/haveaniceday
 
 dashboard
+
