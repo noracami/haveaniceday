@@ -66,11 +66,12 @@
       </div>
     </nav>
     <div class="container">
-      <ul class="nav navbar-nav">
+      <ol class="breadcrumb">
+        <a class="btn disabled" href=""><span class="glyphicon glyphicon-console" aria-hidden="true"></span></a>
         {% block bread %}
-        <li>home</li>
+        <li><a href="{% url 'home' %}">Home</a></li>
         {% endblock %}
-      </ul>
+      </ol>
     </div>
     <div class="container">
       {% block content %}

@@ -3,3 +3,7 @@
 {% block navbar %}
 {{ block.super }}
 {% endblock %}
+{% block bread %}
+{{ block.super }}
+<li><a href="{% url 'order:home' %}">{{ value|default:"人員調動資料" }}</a></li>
+{% endblock %}

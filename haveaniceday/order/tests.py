@@ -6,7 +6,7 @@ class OrderViewTests(TestCase):
     def test_order_view(self):
         response = self.client.get('/order/')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'order/order_list.html')
+        self.assertTemplateUsed(response, 'order/home.html')
 
 class MemberViewTests(TestCase):
     def setUp(self):

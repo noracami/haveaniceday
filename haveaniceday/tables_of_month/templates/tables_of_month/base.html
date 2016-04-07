@@ -3,3 +3,7 @@
 {% block navbar %}
 {{ block.super }}
 {% endblock %}
+{% block bread %}
+{{ block.super }}
+<li><a href="{% url 'tables_of_month:home' %}">{{ value|default:"人員輪值表" }}</a></li>
+{% endblock %}

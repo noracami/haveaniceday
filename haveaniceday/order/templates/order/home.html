@@ -1,0 +1,22 @@
+{# order/templates/home.html #}
+{% extends "order/base.html" %}
+{% block navbar %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+<p>
+  <a href="{% url 'order:member_list' %}">人員清單</a>
+</p>
+{% comment %}
+<p>
+  <a href="{% url 'order:order_list' %}">清單</a>
+</p>
+{% endcomment %}
+{% for order in orders %}
+<div class="_table">
+  <h2><a href="{% url 'order:order_detail' pk=order.pk %}">{{ order }}</a></h2>
+</div>
+{% endfor %}
+{% endblock %}

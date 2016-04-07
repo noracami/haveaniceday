@@ -3,7 +3,7 @@ from .models import Member
 
 # Create your views here.
 def home(request):
-    return render(request, 'order/order_list.html', {})
+    return render(request, 'order/home.html', {})
     return render(request, 'website_component/home.html', {'ViewName': request})
 
 def member_list(request):
