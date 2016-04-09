@@ -3,6 +3,10 @@
 {% block navbar %}
 {{ block.super }}
 {% endblock %}
+{% block bread %}
+{{ block.super }}
+<li><a href="{% url 'order:member_list' %}">{{ value|default:"人員清單" }}</a></li>
+{% endblock %}
 {% block content %}
 {{ block.super }}
 {% for member in members %}
