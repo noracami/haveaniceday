@@ -28,7 +28,8 @@ class Member(models.Model):
         print(output)
         return
 
-
     def __str__(self):
-        f = lambda str: str if str!='' else ''
-        return '%s-(%s)' % (self.name, f(self.kmID))
+        resp = self.name
+        f = lambda str: ('-(%s)' % str) if str!='' else ''
+        resp += f(self.kmID)
+        return resp
