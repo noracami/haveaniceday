@@ -5,5 +5,5 @@ from order.models import Member
 
 @receiver(pre_save, sender=Member)
 def model_pre_save(sender, **kwargs):
-    print('another test')
+    #print('another test')
     kwargs['instance'].splitlocation()

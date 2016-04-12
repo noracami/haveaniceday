@@ -26,6 +26,7 @@ class Member(models.Model):
         output = 'ori:%s -> [%s, %s, %s]' % (
             self.location, self.location1, self.location2, self.location3)
         print(output)
+        print()
         return
 
     def __str__(self):
