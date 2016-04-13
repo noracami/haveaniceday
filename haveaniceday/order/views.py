@@ -13,7 +13,9 @@ def member_list(request):
     """
     members = Member.objects.all()
     page = get_object_or_404(CustomWebPage, name='人員清單')
-    return render(request, 'order/member_list.html', {'page': page, 'members': members})
+    components = page.components.all()
+    return render(request, 'order/member_list.html',
+        {'page': page, 'components': components, 'members': members})
 
 
 def member_detail(request):

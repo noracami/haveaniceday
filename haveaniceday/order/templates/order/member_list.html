@@ -19,23 +19,19 @@
 <table class="table">
   <thead>
     <tr>
-      <th>column1</th>
-      <th>column2</th>
-      <th>column3</th>
-      <th>column4</th>
-      <th>column5</th>
-      <th>column6</th>
-      <th>column7</th>
-      <th>column8</th>
-      <th>column9</th>
-      <th>column10</th>
-      <th>column11</th>
-      <th>column12</th>
+      {% for comp in components %}
+      <th>
+        {{ comp.value }}
+      </th>
+      {% endfor %}
     </tr>
   </thead>
   <tbody>
     {% for member in members %}
     <tr>
+      <td>
+        {{ member.kmID }}
+      </td>
       <td>
         {{ member.name }}
       </td>
@@ -76,13 +72,16 @@
     {% endfor %}
     <tr>
       <td>
-        page-> {{ page }} .components-> {{ page.components }}
+        {{ components.0.value }}
       </td>
       <td>
-        test
+        page-> {{ page }}
       </td>
       <td>
-        {{ page.column_kmID }}
+        page.components
+      </td>
+      <td>
+        components
       </td>
       <td>
         {{ page.column_kmID }}
