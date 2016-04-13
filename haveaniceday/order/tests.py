@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Member
+from website_component.models import CustomWebPage, CustomComponent
 
 # Create your tests here.
 class OrderViewTests(TestCase):
@@ -17,6 +18,11 @@ class MemberViewTests(TestCase):
         another_member = Member(
             name='test')
         another_member.save()
+        page = CustomWebPage(name='人員清單')
+        page.save()
+        customcomponent = CustomComponent(name='CustomComponent', value='value')
+        customcomponent.page = page
+        customcomponent.save()
 
     def tearDown(self):
         Member.objects.all().delete()
