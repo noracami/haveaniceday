@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from .models import Member
+from website_component.models import CustomWebPage, CustomComponent
 
 # Create your views here.
 def home(request):
@@ -11,7 +12,8 @@ def member_list(request):
     docstring for member_list
     """
     members = Member.objects.all()
-    return render(request, 'order/member_list.html', {'members': members})
+    page = get_object_or_404(CustomWebPage, name='人員清單')
+    return render(request, 'order/member_list.html', {'page': page, 'members': members})
 
 
 def member_detail(request):
