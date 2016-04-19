@@ -1,11 +1,52 @@
 {# order/templates/order_list.html #}
 {% extends "order/base.html" %}
-{% block navbar %}
-{{ block.super }}
-{% endblock %}
+{% block navbar %}{{ block.super }}{% endblock %}
 
 {% block content %}
 {{ block.super }}
+<ol class="breadcrumb">
+  {% block abc %}
+  <li>
+    <a class="btn btn-info" href="{% url 'order:member_list' %}">
+      <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+      人員清單
+    </a>
+  </li>
+  <li></li>
+  <li>
+    <a class="btn btn-success" href="{% url 'order:member_list' %}">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      add a new record
+    </a>
+  </li>
+  {% endblock %}
+</ol>
+{% comment %}
+<p>
+  <a href="{% url 'order:order_list' %}">清單</a>
+</p>
+{% endcomment %}
+<div>
+  <table class="table">
+    <tr>
+      <td>生效日</td>
+      <td>name</td>
+      <td>old_location1</td>
+      <td>old_location2</td>
+      <td>old_location3</td>
+      <td>old_title</td>
+      <td>new_location1</td>
+      <td>new_location2</td>
+      <td>new_location3</td>
+      <td>new_title</td>
+      <td>oredr_no.</td>
+      <td>account1</td>
+      <td>account2</td>
+      <td>account3</td>
+      <td>account4</td>
+    </tr>
+  </table>
+</div>
 {% for order in orders %}
 <div class="_table">
   <h2><a href="{% url 'order:order_detail' pk=order.pk %}">{{ order }}</a></h2>

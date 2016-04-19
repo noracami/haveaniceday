@@ -1,11 +1,11 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Member
 from website_component.models import CustomWebPage, CustomComponent
 
 # Create your views here.
 def home(request):
-    return render(request, 'order/home.html', {})
-    return render(request, 'website_component/home.html', {'ViewName': request})
+    return redirect('order:order_list')
+    #return render(request, 'order/home.html', {})
 
 def member_list(request):
     """
